@@ -38,29 +38,29 @@
 # Orchestration의 구성 요소
 (Kubernetes 기준)
 
-**Pod**     
+## Pod  
 Kubernetes에서 배포되는 가장 작은 단위  
 (하나 이상의 컨테이너를 묶어서 하나의 그룹으로 관리하는 단위)       
 보통 컨테이너 하나당 Pod 하나로 구성되는 경우가 많다.   
 같은 Pod 안의 컨테이너들은 네트워크와 저장공간을 공유한다.
 
-**Node**           
+## Node          
 Pod가 실제로 배치되어 실행되는 물리적/가상 서버 한 대를 의미한다.   
 여러 개의 Node가 모여서 하나의 클러스터를 이룬다.
 
-**Cluster**     
+## Cluster     
 여러 개의 Node를 하나로 묶어놓은 전체 집합을 의미한다.      
 Orchestration 도구는 이 클러스터 전체를 하나의 단위처럼 다루면서 Pod들을 적절히 분산 배치한다.
 
-**Deployment**      
+## Deployment    
 "이 애플리케이션을 몇 개의 Pod로, 어떤 이미지로 실행할지"를 선언적으로 정의하는 설정이다.       
 예를 들어 "이 앱은 항상 Pod 3개가 떠 있어야 한다"고 Deployment에 정의해두면, 하나가 죽어도 Kubernetes가 자동으로 감지해서 다시 3개를 맞춰준다.      
 앞서 다룬 자동 복구(Self-healing)가 실제로 동작하는 원리가 바로 이 Deployment 개념이다.
 
-**Service**     
+## Service     
 여러 개의 Pod에 접근할 수 있는 하나의 고정된 진입점(네트워크 주소)을 제공한다.      
 Pod는 죽었다 다시 생기면 IP가 바뀔 수 있는데, Service는 이 변화와 상관없이 항상 같은 이름/주소로 접근할 수 있게 해준다.     
 
-**ConfigMap / Secret**      
+## ConfigMap / Secret   
 애플리케이션 설정값이나 민감한 정보(비밀번호, API 키 등)를 컨테이너 코드와 분리해서 관리하는 오브젝트다.    
 ConfigMap은 일반 설정값을, Secret은 민감한 정보를 저장하는 용도로 구분해서 쓴다.
