@@ -26,7 +26,7 @@ spec:
    accessModes:
     - ReadWriteOnce
    hostPath:
-	path: /data/my-pv
+    path: /data/my-pv
 ```
 
 관리자가 스토리지 용량, 접근 모드 등을 미리 정해서 PV를 등록해두고 PVC가 생성되면 **Kubernetes가 조건에 맞는 PV를 찾아 자동으로 바인딩**한다. 어떤 스토리지가 어떻게 쓰이는지 통제하기 쉽지만 매번 관리자가 수동으로 PV를 만들어둬야 해서 번거롭고 수요를 못 맞추면 자원이 남거나 부족해진다.
