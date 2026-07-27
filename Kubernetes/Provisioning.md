@@ -19,14 +19,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-	name: my-pv
+ name: my-pv
 spec:
-	capacity:
-		storage: 10Gi
-	accessModes:
-		- ReadWriteOnce
-	hostPath:
-		path: /data/my-pv
+ capacity:
+  storage: 10Gi
+   accessModes:
+    - ReadWriteOnce
+   hostPath:
+	path: /data/my-pv
 ```
 
 관리자가 스토리지 용량, 접근 모드 등을 미리 정해서 PV를 등록해두고 PVC가 생성되면 **Kubernetes가 조건에 맞는 PV를 찾아 자동으로 바인딩**한다. 어떤 스토리지가 어떻게 쓰이는지 통제하기 쉽지만 매번 관리자가 수동으로 PV를 만들어둬야 해서 번거롭고 수요를 못 맞추면 자원이 남거나 부족해진다.
@@ -39,14 +39,14 @@ spec:
 apiVersion: v1
 kind: PersistenVolumeClaim
 metadata: 
-	name: my-pvc
+ name: my-pvc
 spec:
-	accessModes:
-		- ReadWriteOnce
-	storageClassName: standard
-	resources:
-		requests:
-			storage: 10Gi
+ accessModes:
+  - ReadWriteOnce
+ storageClassName: standard
+  resources:
+   requests:
+    storage: 10Gi
 ```
 
 관리자가 PV를 미리 만들어둘 필요 없이 **PVC 요청만 하면 StorageClass가 알아서 PV를 즉석에서 생성**한다. 관리자 개입 없이 즉시 자원 확보가 가능하고 확장성이 뛰어나지만 자동 생성이다 보니 어떤 스토리지가 얼마나 쓰이는지 **세밀한 통제는 상대적으로 어렵다.**
